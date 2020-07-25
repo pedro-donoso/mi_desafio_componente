@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author= "Pedro Donoso">
+
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--componente js externo llamado, va abajo del cdn de vue-->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+    <div id="app"><!--debe ser igual a la instancia-->
+        <mi_serie v-for="(personaje, index) in personajes" :key="index" :nombre="personaje.nombre" :foto="personaje.foto"></card>
+    </div>
+
+    <script>
+
+      Vue.component("mi_serie",{
+          template: 
+          `
+            <div>
+          
+                <img class="foto mb-5" :src="foto">
+                <button class="name bg-dark" >{{nombre}}</button>
+                <br>
+            </div>
+          `
+          ,
+          props: ['nombre', 'foto']
+      })
+      
+        //instancia
+       const app = new Vue({
+            el: '#app',
+            data:{
+                personajes: [
+                    {
+                    nombre: "Rick Sanchez",
+                    foto:"https://rickandmortyapi.com/api/character/avatar/218.jpeg"
+                    },
+                    {
+                    nombre: "Morty Smith",
+                    foto:"https://rickandmortyapi.com/api/character/avatar/25.jpeg"
+                    },
+                    {
+                    nombre: "Summer Smith",
+                    foto:"https://rickandmortyapi.com/api/character/avatar/120.jpeg"
+                    },
+                    {
+                    nombre: "Beth Smith",
+                    foto:"https://rickandmortyapi.com/api/character/avatar/116.jpeg"
+                    },
+                    {
+                    nombre: "Jerry Smith",
+                    foto:"https://rickandmortyapi.com/api/character/avatar/195.jpeg"
+                    },
+                    ]
+            }
+        });
+       
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+
+<style>
+    body{
+        background: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
+        background-size: cover;
+        color: white;
+    }
+
+    .name{
+        color: green;
+        margin-left: 1rem;
+        background-color: black;
+        width: 8rem;
+        text-align: center;
+        margin-top: 1rem;
+        border-radius: 10%;
+        height: 3rem;
+        
+    }
+
+    .foto{
+        border-radius: 50%;
+        margin-left: 4rem;
+        margin-top: 4rem;
+        transition:all .5s ease-in-out;
+    }
+
+      .foto:hover{
+        filter: saturate(180%);
+    }
+
+</style>
+
+
+
+</html>
+
+
